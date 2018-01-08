@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,11 +44,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ・値をSecondActivityへIntent？
     */
     public void onClick(View v) {
+        double num1 = 0;
+        String tmp1 = mEditText1.getText().toString();
+        if(tmp1 != null && tmp1.length() > 0){
+            num1 = Double.parseDouble(tmp1);
+        } else {
+            Log.d("Parse_Double", "値が入っていません。");
+        }
+
+        double num2 = 0;
+        String tmp2 = mEditText2.getText().toString();
+        if(tmp2 != null && tmp2.length() > 0){
+            num2 = Double.parseDouble(tmp2);
+        } else {
+            Log.d("Parse_Double", "値が入っていません。");
+        }
+
         Intent intent = new Intent(this, SecondActivity.class);
         //VALUE1のvalueは、一個目入力EditTextの値
-        intent.putExtra("VALUE1", mEditText1.getText().toString());
+        intent.putExtra("VALUE1", num1);
         //VALUE2のvalueは、個目入力EditTextの値
-        intent.putExtra("VALUE2", mEditText2.getText().toString());
+        intent.putExtra("VALUE2", num2);
         //VALUE3のvalueは、どのボタンを押したか　＊先ずはこれは無視して足し算だけ
         //intent.putExtra("VALUE3", );
         startActivity(intent);
