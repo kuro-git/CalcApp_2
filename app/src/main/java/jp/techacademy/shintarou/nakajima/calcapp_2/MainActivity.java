@@ -65,7 +65,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("VALUE1", num1);
         //VALUE2のvalueは、個目入力EditTextの値
         intent.putExtra("VALUE2", num2);
-        //VALUE3のvalueは、どのボタンを押したか　＊先ずはこれは無視して足し算だけ
+        //VALUE3のvalueは、どのボタンを押したか。if文で判定
+        String Kigo =
+        if ( v.getId() == R.id.button1 ) {
+            Kigo = "+"; //Minus,Dial,Divide
+        }
+
+
+
+
         //intent.putExtra("VALUE3", );
         startActivity(intent);
     }
